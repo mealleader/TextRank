@@ -29,6 +29,10 @@ func NewDefaultRule() *parse.RuleDefault {
 	return parse.NewRule()
 }
 
+func NewMTextRule() *parse.RuleEn {
+	return parse.NewEnRule()
+}
+
 // NewDefaultLanguage function retrieves a default Language object. It defines
 // what words are real and what words are just Stop Words or useless Junk Words.
 // It uses the default English Stop Words, but it's possible to set different
@@ -37,6 +41,10 @@ func NewDefaultRule() *parse.RuleDefault {
 // implementation. This is the 3rd step to use TextRank.
 func NewDefaultLanguage() *convert.LanguageDefault {
 	return convert.NewLanguage()
+}
+
+func NewMTextLanguage() *convert.LanguageMText {
+	return convert.NewLanguageMText()
 }
 
 // NewDefaultAlgorithm function retrieves an Algorithm object. It defines how
