@@ -50,3 +50,40 @@ func (r *RuleDefault) IsSentenceSeparator(rune rune) bool {
 
 	return false
 }
+
+// -------------------------- parsing rule for mtext.en ------------------------------ //
+type RuleEn struct {
+	wordSeparators     [1]string
+	sentenceSeparators [1]string
+}
+
+func NewEnRule() *RuleEn {
+	return &RuleEn{
+		[1]string{" "},
+		[1]string{"\n"},
+	}
+}
+
+func (r *RuleEn) IsWordSeparator(rune rune) bool {
+	chr := string(rune)
+
+	for _, val := range r.wordSeparators {
+		if chr == val {
+			return true
+		}
+	}
+
+	return r.IsSentenceSeparator(rune)
+}
+
+func (r *RuleEn) IsSentenceSeparator(rune rune) bool {
+	chr := string(rune)
+
+	for _, val := range r.sentenceSeparators {
+		if chr == val {
+			return true
+		}
+	}
+
+	return false
+}

@@ -69,3 +69,47 @@ func (lang *LanguageDefault) SetActiveLanguage(code string) {
 func (lang *LanguageDefault) SetWords(code string, words []string) {
 	lang.languages[code] = words
 }
+
+// ------------------- Language for mtext w/o stopword removal ----------------- //
+
+type LanguageMText struct {
+	defaultLang string
+	stopwords   map[string][]string
+}
+
+func NewLanguageMText() *LanguageMText {
+	lang := &LanguageMText{
+		"en",
+		make(map[string][]string),
+	}
+
+	// words := getDefaultEnglish()
+
+	// lang.SetWords("en", words)
+
+	return lang
+}
+
+func (lang *LanguageMText) IsStopWord(word string) bool {
+	// keep stopword
+	return false
+}
+
+// FindRootWord method gets a word as an input, "apples" for example and it
+// retrieves the root-word of this given word, "apple" for example. The first
+// return parameter is true when a word-root has found, otherwise it's false.
+func (lang *LanguageMText) FindRootWord(word string) (bool, string) {
+	return false, ""
+}
+
+// SetActiveLanguage method switch between languages by the language's code. The
+// language code is not standard, it can be anything.
+func (lang *LanguageMText) SetActiveLanguage(code string) {
+	lang.defaultLang = code
+}
+
+// SetWords method set stop words into the LanguageDefault struct by the
+// language's code.
+func (lang *LanguageMText) SetWords(code string, words []string) {
+	lang.stopwords[code] = words
+}
